@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Order Successful - XELQX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#ff523b;
+      --success:#28a745;
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background: linear-gradient(135deg,#ff523b 0%, #ff9a8b 50%, #ffd6c2 100%);
+      overflow:hidden; /* keep confetti inside viewport */
+    }
+
+    .wrap{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .card{
+      width:100%;
+      max-width:520px;
+      background:#fff;
+      border-radius:18px;
+      padding:36px;
+      box-shadow:0 20px 40px rgba(0,0,0,0.18);
+      text-align:center;
+      position:relative;
+      z-index:10;
+      transform:translateY(0);
+      animation:cardPop .45s cubic-bezier(.2,.85,.32,1.2);
+    }
+
+    @keyframes cardPop{
+      from{ transform:translateY(8px) scale(.98); opacity:0; }
+      to{ transform:translateY(0) scale(1); opacity:1; }
+    }
+
+    /* SVG checkmark */
+    .checkmark-svg{
+      width:110px;
+      height:110px;
+      margin: 0 auto 18px;
+      display:block;
+    }
+
+    h1{
+      margin:6px 0 6px;
+      font-size:22px;
+      color:#222;
+    }
+    p.lead{
+      margin:0 0 18px;
+      color:#555;
+      line-height:1.45;
+    }
+
+    .btns{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      margin-top:14px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      border:0;
+      padding:12px 20px;
+      border-radius:10px;
+      font-weight:600;
+      cursor:pointer;
+      min-width:140px;
+    }
+    .btn.primary{
+      background:var(--accent);
+      color:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+    }
+    .btn.ghost{
+      background:#fff;
+      border:1px solid #eee;
+      color:#333;
+    }
+
+    .redirect{
+      margin-top:12px;
+      color:#777;
+      font-size:13px;
+    }
+
+    /* Confetti base class & animation */
+    .confetti {
+      position:fixed;
+      top:-10vh;
+      width:10px;
+      height:10px;
+      opacity:0.95;
+      pointer-events:none;
+      will-change:transform, opacity;
+      z-index:5;
+    }
+
+    @keyframes confetti-fall {
+      0% { transform: translateY(-8vh) rotate(0deg); opacity:1; }
+      70% { opacity:1; }
+      100% { transform: translateY(110vh) rotate(540deg); opacity:0.85; }
+    }
+
+    /* subtle floating shapes behind the card (optional) */
+    .bg-shape{
+      position:absolute;
+      width:420px;
+      height:420px;
+      border-radius:50%;
+      filter:blur(48px);
+      opacity:0.12;
+      z-index:2;
+      left:50%;
+      top:10%;
+      transform:translateX(-50%);
+    }
+
+    /* responsive */
+    @media(max-width:520px){
+      .card{ padding:22px; border-radius:14px; }
+      .checkmark-svg{ width:88px; height:88px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- soft background glow -->
+    <div class="bg-shape" style="background:linear-gradient(45deg,#ffffff, rgba(255,255,255,0.85));"></div>
+
+    <div class="card" role="status" aria-live="polite">
+      <!-- SVG Animated Checkmark -->
+      <svg class="checkmark-svg" viewBox="0 0 52 52" aria-hidden="true">
+        <circle cx="26" cy="26" r="24" fill="none" stroke="#e6f4ea" stroke-width="4"/>
+        <circle id="circle" cx="26" cy="26" r="20" fill="none" stroke="#28a745" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" 
+                stroke-dasharray="125.6" stroke-dashoffset="125.6"/>
+        <path id="tick" fill="none" stroke="#28a745" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+              d="M14 27 L22 34 L38 16" stroke-dasharray="60" stroke-dashoffset="60"/>
+      </svg>
+
+      <h1>Order Placed Successfully!</h1>
+      <p class="lead">Thanks for your purchase — your order is confirmed. We’ll email you the receipt and tracking details shortly.</p>
+
+      <div class="btns">
+        <button class="btn primary" onclick="location.href='products.html'">Continue Shopping</button>
+        <button class="btn ghost" onclick="location.href='account.html'">View Order</button>
+      </div>
+
+      <p class="redirect">Redirecting to homepage in <strong id="counter">8</strong>s…</p>
+    </div>
+  </div>
+
+  <script>
+    // --- SVG checkmark animation (stroke-dashoffset) ---
+    (function animateCheckmark(){
+      const circle = document.getElementById('circle');
+      const tick = document.getElementById('tick');
+
+      // Animate circle (progress)
+      circle.animate([
+        { strokeDashoffset: 125.6 },
+        { strokeDashoffset: 0 }
+      ], {
+        duration: 600,
+        easing: 'cubic-bezier(.2,.8,.2,1)',
+        fill: 'forwards'
+      });
+
+      // Delay tick draw slightly
+      setTimeout(()=>{
+        tick.animate([
+          { strokeDashoffset: 60 },
+          { strokeDashoffset: 0 }
+        ], {
+          duration: 520,
+          easing: 'cubic-bezier(.2,.8,.2,1)',
+          fill: 'forwards'
+        });
+      }, 420);
+    })();
+
+    // --- Confetti generator ---
+    (function launchConfetti(){
+      const colors = ['#ff3d00','#ffab00','#ffd600','#00c853','#00b0ff','#d500f9','#ff4081'];
+      const count = 90; // total confetti pieces
+
+      for(let i=0;i<count;i++){
+        const el = document.createElement('div');
+        el.className = 'confetti';
+        // random size
+        const size = Math.floor(Math.random()*10)+6; // 6..15
+        el.style.width = size + 'px';
+        el.style.height = (size*0.7) + 'px'; // rectangle-ish
+        // random left starting position (allow a bit off-screen)
+        el.style.left = (Math.random()*120 - 10) + 'vw';
+        // color & rotation
+        el.style.background = colors[Math.floor(Math.random()*colors.length)];
+        el.style.transform = `rotate(${Math.random()*360}deg)`;
+        // random fall duration and delay
+        const duration = (Math.random()*2.2 + 2.2).toFixed(2); // 2.2 .. 4.4s
+        const delay = (Math.random()*0.6).toFixed(2); // 0 .. 0.6s
+        el.style.animation = `confetti-fall ${duration}s linear ${delay}s forwards`;
+        // slight horizontal drifting via CSS variable + animation (optional)
+        document.body.appendChild(el);
+
+        // remove after animation ends
+        el.addEventListener('animationend', ()=> {
+          el.remove();
+        });
+      }
+    })();
+
+    // --- Countdown & redirect ---
+    (function countdownRedirect(){
+      let t = 8;
+      const counter = document.getElementById('counter');
+      const timer = setInterval(()=>{
+        t--;
+        counter.textContent = t;
+        if(t<=0){
+          clearInterval(timer);
+          // navigate home (can change)
+          window.location.href = 'index.html';
+        }
+      }, 1000);
+    })();
+  </script>
+</body>
+</html>
