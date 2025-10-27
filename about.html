@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - XELQX</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+    --primary: #ff523b;
+    --secondary: #ff8a5c;
+    --bg: #fdfdfd;
+    --card: #fff;
+    --text: #333;
+    --shadow: rgba(0,0,0,0.1);
+}
+
+/* General Styles */
+body { margin:0; font-family:'Poppins',sans-serif; background: var(--bg); color: var(--text); overflow-x:hidden;}
+header { background: var(--card); padding: 15px 30px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px var(--shadow); position: sticky; top:0; z-index:100;}
+header .logo img { width:130px; }
+nav ul { list-style:none; display:flex; gap:25px; margin:0; padding:0; }
+nav a { text-decoration:none; color: var(--text); font-weight:500; transition:0.3s; }
+nav a:hover, nav a.active { color: var(--primary); }
+
+/* Hero Section */
+.hero {
+    width:100%;
+    height:400px;
+    background: url('https://source.unsplash.com/1600x900/?fashion') center/cover no-repeat fixed;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    font-size:3rem;
+    font-weight:700;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Floating Fashion Images */
+.floating-img {
+    position:absolute;
+    width:100px;
+    height:100px;
+    object-fit:cover;
+    border-radius:15px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.15);
+    animation: floatAnim 12s ease-in-out infinite;
+    pointer-events:none;
+    z-index:1;
+}
+@keyframes floatAnim {
+    0% { transform: translateY(0px) translateX(0px) rotate(0deg); opacity:0.7; }
+    50% { transform: translateY(-50px) translateX(30px) rotate(180deg); opacity:1; }
+    100% { transform: translateY(0px) translateX(0px) rotate(360deg); opacity:0.7; }
+}
+
+/* Section Styles */
+.section { max-width:1200px; margin:80px auto; padding:0 20px; }
+
+/* Our Story */
+.story h2 { font-size:2.8rem; color: var(--primary); text-align:center; margin-bottom:20px; }
+.story p { font-size:1.2rem; line-height:1.7; text-align:center; max-width:800px; margin:0 auto; color:#555; }
+
+/* Product Showcase */
+.product-showcase {
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    margin-top:50px;
+    perspective:1000px;
+}
+.product-card {
+    background: var(--card);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 20px 50px var(--shadow);
+    cursor:pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+}
+.product-card img { width:100%; height:300px; object-fit:cover; transition: transform 0.3s ease;}
+.product-card h4 { margin:15px; color: var(--primary); }
+.product-card p { margin:0 15px 15px 15px; color:#555; font-size:14px; }
+
+/* Team */
+.team h2 { text-align:center; font-size:2.8rem; color: var(--primary); margin-bottom:40px; }
+.team-cards {
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+.team-card {
+    background: var(--card);
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 20px 50px var(--shadow);
+    text-align:center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.team-card:hover { transform: translateY(-10px) scale(1.03); box-shadow:0 25px 60px var(--shadow);}
+.team-card img { width:120px; height:120px; border-radius:50%; object-fit:cover; margin-bottom:15px; border:3px solid var(--primary);}
+.team-card h4 { margin:10px 0 5px 0; color: var(--primary);}
+.team-card p { margin:0; color:#555; font-size:14px; }
+
+/* Footer */
+.footer { text-align:center; padding:30px; background: var(--card); margin-top:50px; color:#555; }
+
+/* Responsive */
+@media(max-width:900px){ .product-showcase, .team-cards { grid-template-columns: 1fr 1fr; } }
+@media(max-width:600px){ .product-showcase, .team-cards { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo"><a href="index.html"><img src="images/Xelqx-logo.png" alt="XELQX Logo"></a></div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+            <li><a href="account.html">Account</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">About XELQX
+    <img src="images/fashion-shirt.png" class="floating-img" style="top:40%; left:80%;" alt="Fashion Shirt" />
+<img src="images/fashion-dress.png" class="floating-img" style="top:70%; left:20%;" alt="Fashion Dress" />
+<img src="images/fashion-shoes.png" class="floating-img" style="top:20%; left:50%;" alt="Fashion Shoes" />
+<img src="images/fashion-ornaments.png" class="floating-img" style="top:60%; left:60%;" alt="Fashion Accessories" />
+
+
+
+</section>
+
+<section class="section story">
+    <h2>Our Story</h2>
+    <p>At XELQX, fashion meets innovation. We curate premium clothing collections for modern lifestyles, offering style, comfort, and elegance. From exclusive streetwear to chic casuals, our mission is to empower you with confidence and style every day.</p>
+</section>
+
+<section class="section product-showcase">
+    <div class="product-card"><img src="images/rp2.png" alt="Product 1"><h4>Red Printed T-Shirt</h4><p>Premium fabric, perfect fit, stylish design.</p></div>
+    <div class="product-card"><img src="images/w1.png" alt="Product 2"><h4>Classic White Shirt</h4><p>Timeless design, comfortable wear, versatile look.</p></div>
+    <div class="product-card"><img src="images/j1.png" alt="Product 3"><h4>Trendy Jacket</h4><p>Urban fashion, warm and stylish, top-quality material.</p></div>
+    <div class="product-card"><img src="images/sn1.png" alt="Product 4"><h4>Casual Sneakers</h4><p>Lightweight, durable, perfect for everyday wear.</p></div>
+</section>
+
+<section class="section team">
+    <h2>Meet Our Team</h2>
+    <div class="team-cards">
+        <div class="team-card"><img src="images/og.jpg" alt="CEO"><h4>Arjun Thelakkad</h4><p>Founder & CEO</p></div>
+        <div class="team-card"><img src="images/og4.png" alt="Designer"><h4>Riya Sharma</h4><p>Lead Designer</p></div>
+        <div class="team-card"><img src="images/og1.png" alt="Marketing"><h4>Vikram Patel</h4><p>Marketing Head</p></div>
+        <div class="team-card"><img src="images/og3.png" alt="Operations"><h4>Priya Singh</h4><p>Operations</p></div>
+    </div>
+</section>
+
+<div class="footer">&copy; 2025 XELQX. All rights reserved.</div>
+
+<script>
+// 3D Tilt effect for product cards
+const cards = document.querySelectorAll('.product-card');
+cards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const cx = rect.width/2;
+        const cy = rect.height/2;
+        const dx = (x - cx)/10;
+        const dy = (cy - y)/10;
+        card.style.transform = `rotateX(${dy}deg) rotateY(${dx}deg) scale(1.05)`;
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+    });
+});
+</script>
+
+</body>
+</html>

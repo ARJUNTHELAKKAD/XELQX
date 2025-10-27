@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account - XELQX</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --accent: #ff523b;
+    --dark: #222;
+    --light: #f7f7f7;
+    --card: #fff;
+    --bg: #fff;
+    --text: #222;
+}
+body {
+    font-family: 'Poppins',sans-serif;
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    transition: all 0.4s;
+}
+.dark-mode {
+    --bg: #1c1c1c;
+    --card: #2a2a2a;
+    --text: #f7f7f7;
+}
+
+header {
+    background: var(--card);
+    box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    transition: all 0.4s;
+}
+header .logo img { width:130px; }
+nav ul { list-style:none; display:flex; gap:25px; margin:0; padding:0; }
+nav a { text-decoration:none; color: var(--text); font-weight:500; transition:0.3s; }
+nav a:hover, nav a.active { color: var(--accent); }
+
+.account-container {
+    max-width:1100px;
+    margin:40px auto;
+    padding:20px;
+    display:flex;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.sidebar {
+    flex:1;
+    min-width:250px;
+    background: var(--card);
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition: all 0.4s;
+    text-align:center;
+}
+.profile-header {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-bottom:20px;
+}
+.profile-avatar {
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid var(--accent);
+    margin-bottom:10px;
+}
+.profile-name { font-size:20px; font-weight:600; margin:0; }
+.profile-email { font-size:14px; color:#777; margin:0; }
+
+.sidebar nav a { display:block; padding:12px 15px; border-radius:10px; margin-bottom:10px; color: var(--text); transition:0.3s; }
+.sidebar nav a:hover, .sidebar nav a.active { background: var(--accent); color:#fff; }
+
+.account-content {
+    flex:2;
+    min-width:300px;
+    background: var(--card);
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition: all 0.4s;
+}
+.account-content h2 { margin-bottom:20px; color: var(--text); }
+
+.tab-content { display:none; }
+.tab-content.active { display:block; transition:all 0.4s; }
+
+.profile-form label { font-weight:500; margin-bottom:5px; }
+.profile-form input { padding:10px; border-radius:8px; border:1px solid #ddd; outline:none; transition:0.3s; background: var(--bg); color: var(--text);}
+.profile-form input:focus { border-color: var(--accent); }
+.btn-save { padding:12px; background: var(--accent); color:#fff; border:none; border-radius:8px; font-weight:600; cursor:pointer; transition:0.3s; margin-top:10px; }
+.btn-save:hover { background:#ff3017; }
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+.switch input { display: none; }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top:0; left:0; right:0; bottom:0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 25px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 19px; width: 19px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider { background-color: var(--accent); }
+input:checked + .slider:before { transform: translateX(25px); }
+
+.settings-option {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+}
+.settings-option label { font-weight:500; }
+
+.btn-clear {
+  background:#ddd;
+  border:none;
+  padding:10px 15px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.3s;
+}
+.btn-clear:hover { background:#bbb; }
+
+.logout-btn {
+  margin-top:20px;
+  background: var(--accent);
+  color:#fff;
+  border:none;
+  padding:12px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  transition:0.3s;
+}
+.logout-btn:hover { background:#ff3017; }
+
+@media(max-width:900px){ .account-container{ flex-direction:column; } }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo"><a href="index.html"><img src="images/Xelqx-logo.png" alt="XELQX Logo"></a></div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+            <li><a href="account.html" class="active">Account</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="account-container">
+    <div class="sidebar">
+        <div class="profile-header">
+            <img src="images/og.jpg" alt="User Avatar" class="profile-avatar">
+            <h3 class="profile-name" id="userName">ARJUN THELAKKAD</h3>
+            <p class="profile-email" id="userEmail">arjun@example.com</p>
+        </div>
+        <nav>
+            <a href="#" class="active" data-tab="profile">Profile</a>
+            <a href="#" data-tab="orders">Orders</a>
+            <a href="#" data-tab="wishlist">Wishlist</a>
+            <a href="#" data-tab="settings">Settings</a>
+        </nav>
+    </div>
+
+    <div class="account-content">
+        <div id="profile" class="tab-content active">
+            <h2>Profile Details</h2>
+            <form class="profile-form" id="profileForm">
+                <label>Full Name</label><input type="text" id="fullname" value="John Doe">
+                <label>Email</label><input type="email" id="email" value="john@example.com">
+                <label>Phone</label><input type="text" id="phone" value="+91 1234567890">
+                <label>Address</label><input type="text" id="address" value="123 Market Street, Mumbai">
+                <button type="submit" class="btn-save">Save Changes</button>
+            </form>
+        </div>
+
+        <div id="orders" class="tab-content">
+            <h2>My Orders</h2>
+            <div class="orders-preview" id="ordersPreview"></div>
+        </div>
+
+        <div id="wishlist" class="tab-content">
+            <h2>Wishlist</h2>
+            <div class="wishlist-grid" id="wishlistGrid"></div>
+        </div>
+
+        <div id="settings" class="tab-content">
+            <h2>Settings</h2>
+            <div class="settings-option">
+                <label>Dark Mode</label>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeSwitch">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="settings-option">
+                <label>Email Notifications</label>
+                <label class="switch">
+                    <input type="checkbox" id="emailNotify">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="settings-option">
+                <label>SMS Alerts</label>
+                <label class="switch">
+                    <input type="checkbox" id="smsNotify">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <hr style="margin:20px 0;">
+
+            <h3>Privacy & Data</h3>
+            <button class="btn-clear" id="clearOrders">Clear Order History</button>
+            <button class="btn-clear" id="clearWishlist">Clear Wishlist</button>
+
+            <hr style="margin:20px 0;">
+            <button class="logout-btn" id="logoutBtn">Log Out</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Tabs
+const tabLinks = document.querySelectorAll('.sidebar nav a');
+const tabContents = document.querySelectorAll('.tab-content');
+tabLinks.forEach(link=>{
+    link.addEventListener('click', e=>{
+        e.preventDefault();
+        tabLinks.forEach(l=>l.classList.remove('active'));
+        tabContents.forEach(c=>c.classList.remove('active'));
+        link.classList.add('active');
+        document.getElementById(link.dataset.tab).classList.add('active');
+    });
+});
+
+// Dark mode
+const darkSwitch = document.getElementById('darkModeSwitch');
+if(localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+    darkSwitch.checked = true;
+}
+darkSwitch.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', darkSwitch.checked);
+});
+
+// Notification toggles
+const emailNotify = document.getElementById('emailNotify');
+const smsNotify = document.getElementById('smsNotify');
+emailNotify.checked = localStorage.getItem('emailNotify') === 'true';
+smsNotify.checked = localStorage.getItem('smsNotify') === 'true';
+emailNotify.addEventListener('change', ()=> localStorage.setItem('emailNotify', emailNotify.checked));
+smsNotify.addEventListener('change', ()=> localStorage.setItem('smsNotify', smsNotify.checked));
+
+// Clear Data
+document.getElementById('clearOrders').onclick = ()=>{
+    localStorage.removeItem('allOrders');
+    alert("Order history cleared!");
+    location.reload();
+};
+document.getElementById('clearWishlist').onclick = ()=>{
+    localStorage.removeItem('wishlist');
+    alert("Wishlist cleared!");
+    location.reload();
+};
+
+// Logout
+document.getElementById('logoutBtn').onclick = ()=>{
+    localStorage.clear();
+    alert("Logged out successfully!");
+    window.location.href="index.html";
+};
+</script>
+
+</body>
+</html>

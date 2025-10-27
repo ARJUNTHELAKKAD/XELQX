@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - XELQX</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-- Header / Navbar -->
+<div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="images/Xelqx-logo.png" width="125px" alt="XELQX Logo">
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Account</a></li>
+                </ul>
+            </nav>
+            <img src="images/cart.png" width="30px" height="30px" alt="Cart">
+            <img src="images/menu.png" class="menu-icon" onclick="menutoggle()" alt="Menu">
+        </div>
+    </div>
+</div>
+
+<!-- Product Details Section -->
+<div class="small-container single-product">
+    <div class="row">
+        <!-- Product Image -->
+        <div class="col-2">
+            <img src="images/white-t-shirt.jpg" id="productImg" alt="White Printed T-Shirt">
+            <div class="small-img-row">
+                <div class="small-img-col">
+                    <img src="images/white-t-shirt.jpg" class="small-img" alt="White T-Shirt">
+                </div>
+                <div class="small-img-col">
+                    <img src="images/white-t-shirt-side.jpg" class="small-img" alt="White T-Shirt Side">
+                </div>
+                <div class="small-img-col">
+                    <img src="images/white-t-shirt-back.jpg" class="small-img" alt="White T-Shirt Back">
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="col-2">
+            <h1>White Printed T-Shirt</h1>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p>$50.00</p>
+            <h3>Product Details <i class="fa fa-indent"></i></h3>
+            <p>This White Printed T-Shirt is crafted from soft, breathable cotton for all-day comfort.  
+               It features a stylish minimalist print and a relaxed fit for casual outings or workouts.</p>
+
+            <h3>Available Sizes</h3>
+            <select>
+                <option>Select Size</option>
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+                <option>XL</option>
+            </select>
+
+            <h3>Quantity</h3>
+            <input type="number" value="1" min="1">
+
+            <a href="cart.html" class="btn" onclick="addToCart(event)">Add to Cart &#8594;</a>
+
+<script>
+function addToCart(event) {
+    event.preventDefault(); // prevent immediate page reload
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const product = {
+        name: 'White Printed T-Shirt',
+        price: 50,
+        qty: 1,
+        img: 'images/white-t-shirt.jpg'
+    };
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.location.href = 'cart.html'; // redirect to cart page
+}
+</script>
+
+
+            <h3>Product Features</h3>
+            <ul>
+                <li>Soft & Comfortable Cotton</li>
+                <li>Minimalist Printed Design</li>
+                <li>Machine Washable</li>
+                <li>Relaxed Fit for Everyday Wear</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Related Products -->
+<div class="small-container">
+    <h2 class="title">Related Products</h2>
+    <div class="row">
+        <div class="col-4">
+            <img src="images/red-t-shirt.jpg" alt="Red Printed T-Shirt">
+            <h4>Red Printed T-Shirt</h4>
+            <p>$50.00</p>
+        </div>
+        <div class="col-4">
+            <img src="images/red-tiger-t-shirt.jpg" alt="Red Tiger Oversized T-Shirt">
+            <h4>Red Tiger Oversized T-Shirt</h4>
+            <p>$50.00</p>
+        </div>
+        <div class="col-4">
+            <img src="images/veirdo-t-shirt.jpg" alt="VEIRDO Printed Oversized T-Shirt">
+            <h4>VEIRDO Printed Oversized T-Shirt</h4>
+            <p>$50.00</p>
+        </div>
+        <div class="col-4">
+            <img src="images/pic-5.jpg" alt="Coffee Brown Oversized T-Shirt">
+            <h4>Coffee Brown Oversized T-Shirt</h4>
+            <p>$50.00</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download Our App</h3>
+                <p>Download App For Android and IOS</p>
+                <div class="app-logo">
+                    <img src="images/googleplay-logo.png" alt="Google Play">
+                    <img src="images/applestore-logo.png" alt="Apple Store">
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <img src="images/Xelqx-logo-only.png" alt="XELQX">
+                <p>Our Purpose Is to Sustainably Make the Pleasure and Benefits of Sports Accessible to Many.</p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li>Coupons</li>
+                    <li>Blog Post</li>
+                    <li>Return Policy</li>
+                    <li>Join Affiliate</li>
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>Instagram</li>
+                    <li>YouTube</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">Copyright © 2025 - XELQX</p>
+    </div>
+</div>
+
+<!-- JS for toggle menu & image gallery -->
+<script>
+    var MenuItems = document.getElementById("MenuItems");
+    MenuItems.style.maxHeight = "0px";
+
+    function menutoggle() {
+        if (MenuItems.style.maxHeight === "0px") {
+            MenuItems.style.maxHeight = "200px";
+        } else {
+            MenuItems.style.maxHeight = "0px";
+        }
+    }
+
+    // Image Gallery Swap
+    var productImg = document.getElementById("productImg");
+    var smallImgs = document.getElementsByClassName("small-img");
+
+    for (let i = 0; i < smallImgs.length; i++) {
+        smallImgs[i].onclick = function() {
+            productImg.src = smallImgs[i].src;
+        }
+    }
+</script>
+
+</body>
+</html>

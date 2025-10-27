@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XELQX — All Products</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />    
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <style>
+    /* --------------------- PRODUCT PAGE ADVANCED --------------------- */
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 80px auto 40px;
+      max-width: 1200px;
+      padding: 0 25px;
+    }
+
+    .product-header h2 {
+      font-size: 2rem;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .filter-bar select {
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .filter-bar select:hover {
+      border-color: #ff523b;
+    }
+
+    /* ----------------- Product Grid ----------------- */
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 25px 80px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      width: calc(25% - 25px);
+      min-width: 250px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 20px 15px;
+    }
+
+    .product-info h4 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .product-info p {
+      font-size: 16px;
+      color: #777;
+      margin: 5px 0;
+    }
+
+    .rating {
+      margin: 10px 0;
+    }
+
+    .rating i {
+      color: #ff523b;
+    }
+
+    .add-cart {
+      background: linear-gradient(45deg, #ff523b, #ff7b3d);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .add-cart:hover {
+      background: linear-gradient(45deg, #ff7b3d, #ff523b);
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    @keyframes fadeUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* ----------- Responsive ----------- */
+    @media (max-width: 992px) {
+      .product-card { width: calc(33.33% - 20px); }
+    }
+    @media (max-width: 768px) {
+      .product-card { width: calc(50% - 20px); }
+      .product-header { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .product-card { width: 100%; }
+      .product-header { text-align: center; }
+      .filter-bar { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="header">
+    <div class="container">
+      <div class="navbar">
+        <div class="logo">
+          <img src="images/Xelqx-logo.png" width="125px" alt="XELQX Logo" />
+        </div>
+        <nav>
+          <ul id="MenuItems">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html" class="active">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="account.html">Account</a></li>
+          </ul>
+        </nav>
+        <a href="cart.html">
+                <img src="images/cart.png" width="30px" height="30px" alt="Cart">
+            </a>
+        <img src="images/menu.png" class="menu-icon" onclick="menutoggle()" alt="Menu" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Products Header -->
+  <section class="product-header">
+    <h2>Explore Our Latest Collection</h2>
+    <div class="filter-bar">
+      <select>
+        <option>Default Sorting</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Rating</option>
+        <option>Newest</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- Product Grid -->
+<div class="product-grid">
+  <div class="product-card">
+    <img src="images/red-t-shirt.jpg" alt="Red Printed T-Shirt" />
+    <div class="product-info">
+      <h4>Red Printed T-Shirt</h4>
+      <div class="rating">
+        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <p>$50.00</p>
+      <button class="add-cart" 
+        data-name="Red Printed T-Shirt" 
+        data-price="50" 
+        data-img="images/red-t-shirt.jpg">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="images/white-t-shirt.jpg" alt="White Printed T-Shirt" />
+    <div class="product-info">
+      <h4>White Printed T-Shirt</h4>
+      <div class="rating">
+        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+        <i class="fa fa-star-half-o"></i>
+      </div>
+      <p>$50.00</p>
+      <button class="add-cart" 
+        data-name="White Printed T-Shirt" 
+        data-price="50" 
+        data-img="images/white-t-shirt.jpg">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="images/red-tiger-t-shirt.jpg" alt="Red Tiger Oversized T-Shirt" />
+    <div class="product-info">
+      <h4>Red Tiger Oversized T-Shirt</h4>
+      <div class="rating">
+        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+        <i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <p>$50.00</p>
+      <button class="add-cart" 
+        data-name="Red Tiger Oversized T-Shirt" 
+        data-price="50" 
+        data-img="images/red-tiger-t-shirt.jpg">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="images/veirdo-t-shirt.jpg" alt="VEIRDO Printed Oversized T-Shirt" />
+    <div class="product-info">
+      <h4>VEIRDO Printed Oversized T-Shirt</h4>
+      <div class="rating">
+        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <p>$50.00</p>
+      <button class="add-cart" 
+        data-name="VEIRDO Printed Oversized T-Shirt" 
+        data-price="50" 
+        data-img="images/veirdo-t-shirt.jpg">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Toggle Menu JS -->
+  <script>
+    const MenuItems = document.getElementById("MenuItems");
+    MenuItems.style.maxHeight = "0px";
+    function menutoggle() {
+      MenuItems.style.maxHeight = MenuItems.style.maxHeight === "0px" ? "200px" : "0px";
+    }
+  </script>
+  <script>
+  // Handle Add to Cart for all buttons
+  document.querySelectorAll(".add-cart").forEach(btn => {
+    btn.addEventListener("click", function() {
+      const name = this.dataset.name;
+      const price = parseFloat(this.dataset.price);
+      const img = this.dataset.img;
+
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ name, price, qty: 1, img });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      window.location.href = "cart.html";
+    });
+  });
+</script>
+
+</body>
+</html>

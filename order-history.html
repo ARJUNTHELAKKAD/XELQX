@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order History - XELQX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #ff523b;
+      --success: #28a745;
+      --warning: #ffab00;
+      --gray: #f7f7f7;
+      --dark: #222;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fff 0%, #ffe5e0 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo img {
+      width: 130px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .container {
+      flex: 1;
+      max-width: 1100px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      padding: 25px;
+    }
+
+    .title {
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .search-filter {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+      justify-content: center;
+    }
+
+    .search-filter input,
+    .search-filter select {
+      padding: 10px 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      font-size: 14px;
+      width: 220px;
+    }
+
+    .order-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .order-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .order-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .order-id {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .order-status {
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-weight: 500;
+      text-transform: capitalize;
+    }
+
+    .status-delivered {
+      background: #e8f5e9;
+      color: var(--success);
+    }
+
+    .status-shipped {
+      background: #fff8e1;
+      color: var(--warning);
+    }
+
+    .status-processing {
+      background: #e3f2fd;
+      color: #2196f3;
+    }
+
+    .order-body {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .order-body img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .order-info {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .order-info h4 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .order-info p {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .order-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .order-footer .total {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .view-details {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .view-details:hover {
+      background: #ff3017;
+    }
+
+    /* Expandable details */
+    .order-details {
+      margin-top: 15px;
+      display: none;
+      border-top: 1px dashed #ddd;
+      padding-top: 10px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .order-details p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Clear button */
+    #clearOrders {
+      margin: 20px auto;
+      display: block;
+      padding: 10px 25px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 12px rgba(255,82,59,0.3);
+    }
+
+    #clearOrders:hover {
+      background: #ff3017;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      color: #555;
+      font-size: 14px;
+      background: #fff;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
+    }
+
+    @media (max-width: 768px) {
+      .order-body {
+        flex-direction: column;
+        align-items: center;
+      }
+      .order-info {
+        text-align: center;
+      }
+      .view-details {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="images/Xelqx-logo.png" alt="XELQX Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+        <li><a href="account.html">Account</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h2 class="title">Your Orders</h2>
+
+    <div class="search-filter">
+      <input type="text" id="searchInput" placeholder="Search by product or order ID...">
+      <select id="statusFilter">
+        <option value="">All Status</option>
+        <option value="delivered">Delivered</option>
+        <option value="shipped">Shipped</option>
+        <option value="processing">Processing</option>
+      </select>
+    </div>
+
+    <!-- 🧹 Clear Order History Button -->
+    <button id="clearOrders">🧹 Clear All Order History</button>
+
+    <div class="order-list" id="orderList"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 XELQX | All Rights Reserved
+  </footer>
+
+  <script>
+  // --- Toggle Details ---
+  function attachDetailsToggle() {
+    document.querySelectorAll('.view-details').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const details = btn.parentElement.nextElementSibling;
+        details.style.display = details.style.display === 'block' ? 'none' : 'block';
+        btn.textContent = details.style.display === 'block' ? 'Hide Details' : 'View Details';
+      });
+    });
+  }
+
+  // --- Search and Filter ---
+  const searchInput = document.getElementById('searchInput');
+  const statusFilter = document.getElementById('statusFilter');
+  const orderList = document.getElementById('orderList');
+
+  function filterOrders() {
+    const query = searchInput.value.toLowerCase();
+    const status = statusFilter.value;
+
+    document.querySelectorAll('.order-card').forEach(card => {
+      const id = card.querySelector('.order-id').textContent.toLowerCase();
+      const title = card.querySelector('.order-info h4').textContent.toLowerCase();
+      const matchesSearch = id.includes(query) || title.includes(query);
+      const matchesStatus = !status || card.dataset.status === status;
+      card.style.display = matchesSearch && matchesStatus ? 'flex' : 'none';
+    });
+  }
+
+  searchInput.addEventListener('input', filterOrders);
+  statusFilter.addEventListener('change', filterOrders);
+
+  // --- Load all stored orders ---
+  const allOrders = JSON.parse(localStorage.getItem("allOrders")) || [];
+
+  function renderOrders() {
+    orderList.innerHTML = "";
+    if (allOrders.length === 0) {
+      orderList.innerHTML = "<p style='text-align:center; color:#777;'>No previous orders found.</p>";
+      return;
+    }
+
+    allOrders.forEach(order => {
+      const card = document.createElement('div');
+      card.className = 'order-card';
+      card.dataset.status = order.status;
+
+      const statusClass =
+        order.status === "delivered" ? "status-delivered" :
+        order.status === "shipped" ? "status-shipped" : "status-processing";
+
+      card.innerHTML = `
+        <div class="order-header">
+          <span class="order-id">${order.id}</span>
+          <span class="order-status ${statusClass}">${order.status}</span>
+        </div>
+        <div class="order-body">
+          <img src="${order.img || 'images/red-t-shirt.jpg'}" alt="Order Product">
+          <div class="order-info">
+            <h4>${order.product}</h4>
+            <p>Qty: ${order.qty} | Date: ${order.date}</p>
+          </div>
+        </div>
+        <div class="order-footer">
+          <span class="total">Total: $${order.total}</span>
+          <button class="view-details">View Details</button>
+        </div>
+        <div class="order-details">
+          <p><strong>Address:</strong> ${order.address}</p>
+          <p><strong>Payment:</strong> ${order.payment}</p>
+        </div>
+      `;
+      orderList.appendChild(card);
+    });
+
+    attachDetailsToggle();
+  }
+
+  renderOrders();
+
+  // --- Clear Order History ---
+  document.getElementById('clearOrders').addEventListener('click', () => {
+    if (confirm("Are you sure you want to clear all order history?")) {
+      localStorage.removeItem("allOrders");
+      orderList.innerHTML = "<p style='text-align:center; color:#777;'>No previous orders found.</p>";
+    }
+  });
+
+  // --- Highlight newest order ---
+  const firstCard = orderList.firstElementChild;
+  if (firstCard && firstCard.classList.contains("order-card")) {
+    firstCard.style.border = "2px solid #ff523b";
+    firstCard.style.animation = "highlight 1s ease";
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes highlight {
+        0% { background-color: #fff0ec; }
+        100% { background-color: white; }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+  </script>
+</body>
+</html>
